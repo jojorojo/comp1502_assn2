@@ -43,7 +43,7 @@ public class Interface {
                 wh.shipSend(input.next());
                 break;
                 case 6:
-                System.out.print("Enter the number of the item you are ordering: ");
+                System.out.print("Enter the number of the item the customer is ordering: ");
                 wh.placeOrder(input.next());
                 break;
                 case 7:

@@ -183,6 +183,14 @@ public class Item
         setOnHand(newOnHand);
     }
     
+    public boolean checkShip(int amt){
+        boolean valid = false;
+        if (amt > this.getOnHand()){
+            valid = true;
+        }
+        return valid;
+    }
+    
     public boolean checkStock(int amt){
         boolean valid = false;
         if (amt < this.getOnHand()){
@@ -268,7 +276,7 @@ public class Item
     /* Calc Item Value
      * finds the product of unit value and onHand, then outputs the answer as double (UNFORMATTED)
      */
-    public double calcItemValue()
+    private double calcItemValue()
     {
         double itemValue = this.unitPrice * this.onHand;
         return itemValue;
@@ -278,13 +286,19 @@ public class Item
         return this.unitPrice * orderAmt;
     }
     
+    public void printEndHeader(){
+        System.out.println("Item No." + "\t" + "Item Name" + "\t" + "Stock" + "\t" +
+                           "Committed" + "\t" + "Ordered" + "\t" + "Unit Price" + "\t" +
+                           "Item Value");
+    }
+    
     /* End of Day Processing
      * -print Inventory Report
      */
     public void printEnd()
     {
         double itemValue = calcItemValue();
-        System.out.println(itemNo   + "\t" + itemName   + "\t" + onHand  + "\t" + committed + "\t" +
+        System.out.println(itemNo + "\t\t" + itemName + "\t\t" + onHand  + "\t" + committed + "\t\t" +
                            onOrder  + "\t" + unitPrice  + "\t" + itemValue);
         
     }

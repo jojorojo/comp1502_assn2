@@ -64,6 +64,7 @@ public class Warehouse
             }
             inventory[i].addOrder(amt);
             System.out.println("Success! " + amt + " items have been ordered for item #" + inventory[i].getItemNo());
+            System.out.println("Item #" + inventory[i].getItemNo() + " now has " + inventory[i].getOnOrder() + " units on order");
             System.out.println("The total order cost is $" + inventory[i].calcValue(amt));
         }
     }
@@ -95,7 +96,7 @@ public class Warehouse
                 amt = input.nextInt();
                 valid = inventory[i].verifyAmt(amt);
             }
-            valid = inventory[i].checkStock(amt);
+            valid = inventory[i].checkShip(amt);
             while (valid == false){
                 System.out.println("Sorry, you do not have that much on order");
                 System.out.print("Enter how much of the item you received: ");
@@ -145,6 +146,7 @@ public class Warehouse
             }
             inventory[i].returnShip(amt);
             System.out.println("Success! " + amt + " items have been returned for item #" + inventory[i].getItemNo());
+            System.out.println("Item #" + inventory[i].getItemNo() + " now has " + inventory[i].getOnHand() + " units in stock");
             System.out.println("The total order payment will be $" + inventory[i].calcValue(amt));
         }
     }
@@ -177,8 +179,7 @@ public class Warehouse
                 valid = inventory[i].verifyAmt(amt);
             }
             inventory[i].sendOrders(amt);
-            System.out.println("Shipment recorded! You now have " + inventory[i].getOnHand() + 
-                               " items in stock and " + inventory[i].getCommitted() + 
+            System.out.println("Shipment recorded! You now have " + inventory[i].getCommitted() + 
                                " items committed for item #" + inventory[i].getItemNo());
         }
     }
@@ -201,17 +202,19 @@ public class Warehouse
             System.out.println();
         }
         else {
-            System.out.print("Enter how much of the item you are ordering: ");
+            System.out.print("Enter how much of the item the customer is ordering: ");
             amt = input.nextInt();
             valid = inventory[i].verifyAmt(amt);
             while (valid == false){
                 System.out.println("Sorry, you cannot enter a number less than 0");
-                System.out.print("Enter how much of the item you are ordering: ");
+                System.out.print("Enter how much of the item the customer is ordering: ");
                 amt = input.nextInt();
                 valid = inventory[i].verifyAmt(amt);
             }
             inventory[i].newOrder(amt);
             System.out.println("Success! " + amt + " items have been put aside for shipment for item #" + inventory[i].getItemNo());
+            System.out.println("Item #" + inventory[i].getItemNo() + " now has " + inventory[i].getCommitted() + 
+                               " units committed and " + inventory[i].getOnHand() + " units available");
             System.out.println("The total order payment will be $" + inventory[i].calcValue(amt));
         }
     }
@@ -220,16 +223,46 @@ public class Warehouse
      * 
      */
     public void cusReturn(String itemNo){
-        
-            //System.out.println("Success! " + amt + " items have been ordered for item #" + inventory[i].getItemNo());
-            //System.out.println("The total order cost is $" + inventory[i].calcValue(amt));
+        Scanner input = new Scanner(System.in);
+        int i = 0;
+        int amt = 0;
+        boolean valid = false;
+        while (valid == false && i < size){
+            valid = inventory[i].verifyItemNo(itemNo);
+            i++;
+        }
+        i--;
+        if (valid == false){
+            System.out.println("Sorry, that is not a valid item number. Please try again.");
+            System.out.println();
+        }
+        else {
+            System.out.print("Enter how much of the item the customer is returning: ");
+            amt = input.nextInt();
+            valid = inventory[i].verifyAmt(amt);
+            while (valid == false){
+                System.out.println("Sorry, you cannot enter a number less than 0");
+                System.out.print("Enter how much of the item the customer is returning: ");
+                amt = input.nextInt();
+                valid = inventory[i].verifyAmt(amt);
+            }
+            inventory[i].returnOrder(amt);
+            System.out.println("Success! " + amt + " items have been returned for item #" + inventory[i].getItemNo());
+            System.out.println("Item #" + inventory[i].getItemNo() + " now has " + inventory[i].getOnHand() + " units in stock");
+            System.out.println("The total order cost is $" + inventory[i].calcValue(amt));
+        }
     }
     
     /* End of Day Processing
      * 
      */
     public void processEnd(){
-        
+        int i = 0;
+        inventory[i].printEndHeader();
+        while (i < size){
+            inventory[i].printEnd();
+            i++;
+        }
     }
     
     /* Add Item to inventory

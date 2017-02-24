@@ -1,0 +1,43 @@
+Class documentation
+<---- javadoc command: ---->
+/usr/lib/jvm/java-8-openjdk-amd64/bin/javadoc
+-author
+-version
+-nodeprecated
+-package
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.8
+-classpath
+/usr/share/bluej/bluejcore.jar:/usr/share/bluej/junit-4.8.2.jar:/usr/share/bluej/userlib/pi4j-core.jar:/usr/share/bluej/userlib/pi4j-service.jar:/usr/share/bluej/userlib/pi4j-gpio-extension.jar:/usr/share/bluej/userlib/pi4j-device.jar:/home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start
+-d
+/home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc
+-encoding
+windows-1252
+-charset
+windows-1252
+-docletpath
+/usr/share/bluej/bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+/home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/Item.java
+<---- end of javadoc command ---->
+Loading source file /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/Item.java...
+Constructing Javadoc information...
+/home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/Item.java:8: warning - @author tag has no arguments.
+Standard Doclet version 1.8.0_121
+Building tree for all the packages and classes...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/Item.html...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/package-frame.html...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/package-summary.html...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/allclasses-frame.html...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/allclasses-noframe.html...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/index.html...
+Generating /home/max/Documents/Scool/Comp1502/Assignment 2/Assign 2_Phase 1_Start/doc/stylesheet.css...
+1 warning
